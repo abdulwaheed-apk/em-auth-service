@@ -22,4 +22,6 @@ model User {
   password  String
   updatedAt DateTime @default(now())
   lastLogin DateTime @updatedAt
+
+  @@map("users")
 }
