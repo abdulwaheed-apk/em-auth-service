@@ -130,7 +130,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/abwaheed/Desktop/microservices/em-auth-service/generated/prisma",
+      "value": "/home/waheed/Desktop/microservices/em-auth-service/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -144,7 +144,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/abwaheed/Desktop/microservices/em-auth-service/prisma/schema.prisma",
+    "sourceFilePath": "/home/waheed/Desktop/microservices/em-auth-service/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

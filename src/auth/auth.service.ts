@@ -38,27 +38,24 @@ export class AuthService {
   }
 
   async signin(dto: SigninDto) {
-    try {
-      const user = await this.prisma.user.findUnique({
-        where: {
-          email: dto.email,
-        },
-      });
+    const user = await this.prisma.user.findUnique({
+      where: {
+        email: dto.email,
+      },
+    });
 
-      if (!user) {
-        throw new NotFoundException('Account with this email not found');
-      }
-
-      const passMatched = await argon.verify(dto.password, user.password);
-      if (!passMatched) {
-        throw new ForbiddenException('Invalid Credentials');
-      }
-
-      const { password, ...userWithoutPassword } = user;
-      // generate token
-      return userWithoutPassword;
-    } catch (error) {
-      throw error;
+    if (!user) {
+      throw new NotFoundException('Account with this email not found');
     }
+
+    const passMatched = await argon.verify(user.password, dto.password);
+    console.log('passMatched', passMatched);
+    if (!passMatched) {
+      throw new ForbiddenException('Credentials incorrect');
+    }
+
+    const { password, ...userWithoutPassword } = user;
+    // generate token
+    return userWithoutPassword;
   }
 }
