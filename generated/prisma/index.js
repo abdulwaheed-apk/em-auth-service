@@ -130,7 +130,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/waheed/Desktop/microservices/em-auth-service/generated/prisma",
+      "value": "/home/abwaheed/Desktop/microservices/em-auth-service/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -144,7 +144,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/waheed/Desktop/microservices/em-auth-service/prisma/schema.prisma",
+    "sourceFilePath": "/home/abwaheed/Desktop/microservices/em-auth-service/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -162,7 +162,7 @@ const config = {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://postgres:123@localhost:5434/mydb?schema=public"
+        "value": "postgresql://postgres:123@localhost:5434/nest"
       }
     }
   },
