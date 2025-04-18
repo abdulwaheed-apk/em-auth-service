@@ -18,22 +18,26 @@ export class AuthService {
     private config: ConfigService,
   ) {}
 
-  async signup(dto: SignupDto) {
+  async signup(dto: SignupDto, isAdmin = false) {
     const hash = await argon.hash(dto.password);
 
     try {
+      const roles = isAdmin ? ['ADMIN'] : ['CUSTOMER'];
+
       const user = await this.prisma.user.create({
         data: {
           email: dto.email,
           password: hash,
           firstName: dto.firstName,
           lastName: dto.lastName,
+          roles: roles,
         },
       });
 
       return {
         id: user.id,
         email: user.email,
+        roles: user.roles,
         msg: 'Account created successfully',
       };
     } catch (error) {
@@ -47,26 +51,22 @@ export class AuthService {
   }
 
   async signin(dto: SigninDto) {
-    try {
-      const user = await this.prisma.user.findUnique({
-        where: {
-          email: dto.email,
-        },
-      });
+    const user = await this.prisma.user.findUnique({
+      where: {
+        email: dto.email,
+      },
+    });
 
-      if (!user) {
-        throw new NotFoundException('Account with this email not found');
-      }
-
-      const passMatched = await argon.verify(user.password, dto.password);
-      if (!passMatched) {
-        throw new ForbiddenException('Credentials incorrect');
-      }
-
-      return this.signToken(user.id, user.email);
-    } catch (error) {
-      throw error;
+    if (!user) {
+      throw new NotFoundException('Account with this email not found');
     }
+
+    const passMatched = await argon.verify(user.password, dto.password);
+    if (!passMatched) {
+      throw new ForbiddenException('Credentials incorrect');
+    }
+
+    return this.signToken(user.id, user.email);
   }
 
   async signToken(
@@ -77,7 +77,7 @@ export class AuthService {
       sub: userId,
       email,
     };
-    const secret = this.config.get('JWT_SECRET');
+    const secret = this.config.get('JWT_SECRET') as string;
 
     const token = await this.jwt.signAsync(payload, {
       expiresIn: '15m',

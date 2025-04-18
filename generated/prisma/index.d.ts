@@ -915,6 +915,7 @@ export namespace Prisma {
     lastName: number
     email: number
     password: number
+    roles: number
     updatedAt: number
     lastLogin: number
     _all: number
@@ -955,6 +956,7 @@ export namespace Prisma {
     lastName?: true
     email?: true
     password?: true
+    roles?: true
     updatedAt?: true
     lastLogin?: true
     _all?: true
@@ -1052,6 +1054,7 @@ export namespace Prisma {
     lastName: string | null
     email: string
     password: string
+    roles: string[]
     updatedAt: Date
     lastLogin: Date
     _count: UserCountAggregateOutputType | null
@@ -1081,6 +1084,7 @@ export namespace Prisma {
     lastName?: boolean
     email?: boolean
     password?: boolean
+    roles?: boolean
     updatedAt?: boolean
     lastLogin?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1091,6 +1095,7 @@ export namespace Prisma {
     lastName?: boolean
     email?: boolean
     password?: boolean
+    roles?: boolean
     updatedAt?: boolean
     lastLogin?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1101,6 +1106,7 @@ export namespace Prisma {
     lastName?: boolean
     email?: boolean
     password?: boolean
+    roles?: boolean
     updatedAt?: boolean
     lastLogin?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1111,11 +1117,12 @@ export namespace Prisma {
     lastName?: boolean
     email?: boolean
     password?: boolean
+    roles?: boolean
     updatedAt?: boolean
     lastLogin?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "email" | "password" | "updatedAt" | "lastLogin", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "email" | "password" | "roles" | "updatedAt" | "lastLogin", ExtArgs["result"]["user"]>
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
@@ -1126,6 +1133,7 @@ export namespace Prisma {
       lastName: string | null
       email: string
       password: string
+      roles: string[]
       updatedAt: Date
       lastLogin: Date
     }, ExtArgs["result"]["user"]>
@@ -1556,6 +1564,7 @@ export namespace Prisma {
     readonly lastName: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
+    readonly roles: FieldRef<"User", 'String[]'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
     readonly lastLogin: FieldRef<"User", 'DateTime'>
   }
@@ -1944,6 +1953,7 @@ export namespace Prisma {
     lastName: 'lastName',
     email: 'email',
     password: 'password',
+    roles: 'roles',
     updatedAt: 'updatedAt',
     lastLogin: 'lastLogin'
   };
@@ -2048,6 +2058,7 @@ export namespace Prisma {
     lastName?: StringNullableFilter<"User"> | string | null
     email?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    roles?: StringNullableListFilter<"User">
     updatedAt?: DateTimeFilter<"User"> | Date | string
     lastLogin?: DateTimeFilter<"User"> | Date | string
   }
@@ -2058,6 +2069,7 @@ export namespace Prisma {
     lastName?: SortOrderInput | SortOrder
     email?: SortOrder
     password?: SortOrder
+    roles?: SortOrder
     updatedAt?: SortOrder
     lastLogin?: SortOrder
   }
@@ -2071,6 +2083,7 @@ export namespace Prisma {
     firstName?: StringNullableFilter<"User"> | string | null
     lastName?: StringNullableFilter<"User"> | string | null
     password?: StringFilter<"User"> | string
+    roles?: StringNullableListFilter<"User">
     updatedAt?: DateTimeFilter<"User"> | Date | string
     lastLogin?: DateTimeFilter<"User"> | Date | string
   }, "id" | "email">
@@ -2081,6 +2094,7 @@ export namespace Prisma {
     lastName?: SortOrderInput | SortOrder
     email?: SortOrder
     password?: SortOrder
+    roles?: SortOrder
     updatedAt?: SortOrder
     lastLogin?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -2099,6 +2113,7 @@ export namespace Prisma {
     lastName?: StringNullableWithAggregatesFilter<"User"> | string | null
     email?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
+    roles?: StringNullableListFilter<"User">
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     lastLogin?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -2108,6 +2123,7 @@ export namespace Prisma {
     lastName?: string | null
     email: string
     password: string
+    roles?: UserCreaterolesInput | string[]
     updatedAt?: Date | string
     lastLogin?: Date | string
   }
@@ -2118,6 +2134,7 @@ export namespace Prisma {
     lastName?: string | null
     email: string
     password: string
+    roles?: UserCreaterolesInput | string[]
     updatedAt?: Date | string
     lastLogin?: Date | string
   }
@@ -2127,6 +2144,7 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    roles?: UserUpdaterolesInput | string[]
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastLogin?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2137,6 +2155,7 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    roles?: UserUpdaterolesInput | string[]
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastLogin?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2147,6 +2166,7 @@ export namespace Prisma {
     lastName?: string | null
     email: string
     password: string
+    roles?: UserCreaterolesInput | string[]
     updatedAt?: Date | string
     lastLogin?: Date | string
   }
@@ -2156,6 +2176,7 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    roles?: UserUpdaterolesInput | string[]
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastLogin?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2166,6 +2187,7 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    roles?: UserUpdaterolesInput | string[]
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastLogin?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2211,6 +2233,14 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2233,6 +2263,7 @@ export namespace Prisma {
     lastName?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    roles?: SortOrder
     updatedAt?: SortOrder
     lastLogin?: SortOrder
   }
@@ -2331,12 +2362,21 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type UserCreaterolesInput = {
+    set: string[]
+  }
+
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type UserUpdaterolesInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type DateTimeFieldUpdateOperationsInput = {

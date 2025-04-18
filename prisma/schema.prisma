@@ -20,6 +20,7 @@ model User {
   lastName  String?
   email     String   @unique
   password  String
+  roles     String[] @default(["CUSTOMER"])
   updatedAt DateTime @default(now())
   lastLogin DateTime @updatedAt
 

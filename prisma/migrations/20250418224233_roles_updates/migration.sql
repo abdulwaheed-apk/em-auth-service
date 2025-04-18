@@ -1,12 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the `User` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropTable
-DROP TABLE "User";
-
 -- CreateTable
 CREATE TABLE "users" (
     "id" SERIAL NOT NULL,
@@ -14,6 +5,7 @@ CREATE TABLE "users" (
     "lastName" TEXT,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "roles" TEXT[] DEFAULT ARRAY['CUSTOMER']::TEXT[],
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "lastLogin" TIMESTAMP(3) NOT NULL,
 
